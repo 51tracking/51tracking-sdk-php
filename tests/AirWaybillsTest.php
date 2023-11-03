@@ -3,6 +3,7 @@ namespace Tests;
 
 use PHPUnit\Framework\TestCase;
 use Tracking51\AirWaybills;
+use Tracking51\ErrorMessages;
 use Tracking51\Tracking51Exception;
 
 class AirWaybillsTest extends TestCase
@@ -23,14 +24,14 @@ class AirWaybillsTest extends TestCase
             new AirWaybills();
         } catch (Tracking51Exception $e) {
             $this->assertInstanceOf(Tracking51Exception::class, $e);
-            $this->assertEquals($e->getMessage(), 'API Key is missing');
+            $this->assertEquals($e->getMessage(), ErrorMessages::ErrEmptyAPIKey);
         }
     }
 
     /** @tests */
     public function testCreateAnAirWayBill()
     {
-        $airNumber = 'ABC123456789';
+        $airNumber = '235-69030430';
         $response = $this->airWaybills->createAnAirWayBill(['awb_number'=>$airNumber]);
         $this->assertInternalType('array',$response);
     }
@@ -38,13 +39,13 @@ class AirWaybillsTest extends TestCase
     /** @test */
     public function testAwbNumberCantBeEmpty()
     {
-        $this->throwsError('createAnAirWayBill', [''], 'Awb number cannot be empty');
+        $this->throwsError('createAnAirWayBill', [''], ErrorMessages::ErrMissingAwbNumber);
     }
 
     /** @test */
     public function testCreateAnAirWayBillWithInvalidAwbNumberFormat()
     {
-        $this->throwsError('createAnAirWayBill', [['awb_number'=>'123456']], 'The air waybill number format is invalid and can only be 12 digits in length');
+        $this->throwsError('createAnAirWayBill', [['awb_number'=>'123456']], ErrorMessages::ErrInvalidAirWaybillFormat);
     }
 
     private function throwsError($method, $args, $errorMessage)

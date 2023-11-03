@@ -3,6 +3,7 @@ namespace Tests;
 
 use PHPUnit\Framework\TestCase;
 use Tracking51\Couriers;
+use Tracking51\ErrorMessages;
 use Tracking51\Tracking51Exception;
 
 class CouriersTest extends TestCase
@@ -23,7 +24,7 @@ class CouriersTest extends TestCase
             new Couriers();
         } catch (Tracking51Exception $e) {
             $this->assertInstanceOf(Tracking51Exception::class, $e);
-            $this->assertEquals($e->getMessage(), 'API Key is missing');
+            $this->assertEquals($e->getMessage(), ErrorMessages::ErrEmptyAPIKey);
         }
     }
 
@@ -45,7 +46,7 @@ class CouriersTest extends TestCase
     /** @test */
     public function testTrackingNumberCantBeEmpty()
     {
-        $this->throwsError('detect', [''], 'Tracking number cannot be empty');
+        $this->throwsError('detect', [''], ErrorMessages::ErrMissingTrackingNumber);
     }
 
     private function throwsError($method, $args, $errorMessage)

@@ -21,7 +21,7 @@ class Couriers implements CouriersInterface {
     public function detect($params = [])
     {
         if (empty($params['tracking_number'])) {
-            throw new Tracking51Exception('Tracking number cannot be empty');
+            throw new Tracking51Exception(ErrorMessages::ErrMissingTrackingNumber);
         }
         $this->apiPath = 'detect';
         $response = $this->sendApiRequest($params,'POST');

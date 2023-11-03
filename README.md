@@ -61,6 +61,7 @@ print_r($response);
 <?php
 
 require(__DIR__ . '/51tracking/51tracking-sdk-php/src/Tracking51Exception.php');
+require(__DIR__ . '/51tracking/51tracking-sdk-php/src/ErrorMessages.php');
 require(__DIR__ . '/51tracking/51tracking-sdk-php/src/Request.php');
 require(__DIR__ . '/51tracking/51tracking-sdk-php/src/Interfaces/CouriersInterface.php');
 require(__DIR__ . '/51tracking/51tracking-sdk-php/src/Couriers.php');
