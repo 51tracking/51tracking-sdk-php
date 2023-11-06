@@ -19,14 +19,9 @@ try {
     //Get all couriers (couriers/all)
     $response = $couriers->getAllCouriers();
 
-    //    //Detect courier (couriers/detect)
-    //    $params = ['tracking_number'=>'92612903029511573030094531'];
-    //    $response = $couriers->detect($params);
-
     //    //Create an air waybill (awb)
     //    $params = ['awb_number'=>'235-69030430'];
     //    $response = $airWaybill->createAnAirWayBill($params);
-    //    $response = $couriers->detect($params);
 
     //    //Create a Tracking (trackings/create)
     //    $params = ['tracking_number'=>'9400111899562537624646','courier_code'=>'usps','order_number'=>'','customer_name'=>'','title'=>'','language'=>'en','note'=>'tests Order'];

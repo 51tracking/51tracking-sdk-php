@@ -18,14 +18,5 @@ class Couriers implements CouriersInterface {
         return $response;
     }
 
-    public function detect($params = [])
-    {
-        if (empty($params['tracking_number'])) {
-            throw new Tracking51Exception(ErrorMessages::ErrMissingTrackingNumber);
-        }
-        $this->apiPath = 'detect';
-        $response = $this->sendApiRequest($params,'POST');
-        return $response;
-    }
 
 }

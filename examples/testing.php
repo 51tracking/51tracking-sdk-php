@@ -106,20 +106,6 @@ function pr_result( callable $func, $parse_json = true ) {
 					} ?>
                 </td>
             </tr>
-            <tr>
-                <td>Detect courier (couriers/detect)</td>
-                <td>
-                    <input type="button" value="v4/couriers/detect" class="btn btn-primary">
-                </td>
-                <td>
-					<?php if ( $request_all || $action == 'v4/couriers/detect' ) {
-						pr_result( function () use ( $couriers ) {
-                            $params = ['tracking_number'=>'92612903029511573030094531'];
-							return $couriers->detect($params);
-						});
-					} ?>
-                </td>
-            </tr>
             </tbody>
         </table>
 

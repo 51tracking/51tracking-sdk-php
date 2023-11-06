@@ -35,20 +35,6 @@ class CouriersTest extends TestCase
         $this->assertInternalType('array',$response);
     }
 
-    /** @tests */
-    public function testDetect()
-    {
-        $trackingNumber = 'ABC123456789';
-        $response = $this->couriers->detect(['tracking_number' => $trackingNumber]);
-        $this->assertInternalType('array', $response);
-    }
-
-    /** @test */
-    public function testTrackingNumberCantBeEmpty()
-    {
-        $this->throwsError('detect', [''], ErrorMessages::ErrMissingTrackingNumber);
-    }
-
     private function throwsError($method, $args, $errorMessage)
     {
 
